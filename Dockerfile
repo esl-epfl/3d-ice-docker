@@ -1,10 +1,13 @@
 FROM ubuntu
 ENV HOME=/home
 
-COPY . /home/3D-ICE
-WORKDIR /home/3D-ICE
+RUN apt-get update && apt-get -y install mc make flex bison libblas-dev liblapack-dev csh wget git g++
 
-RUN apt-get update && apt-get -y install mc make flex bison libblas-dev liblapack-dev csh wget git
+WORKDIR /home/
+
+RUN git clone https://github.com/esl-epfl/3d-ice.git
+WORKDIR /home/3d-ice
+RUN git checkout -b devel & git pull origin devel
 
 RUN wget http://crd.lbl.gov/~xiaoye/SuperLU/superlu_4.3.tar.gz -O superlu_4.3.tar.gz; \
 tar xvfz superlu_4.3.tar.gz; \
