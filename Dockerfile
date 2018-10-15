@@ -1,7 +1,7 @@
 FROM ubuntu
 ENV HOME=/home
 
-RUN apt-get update && apt-get -y install mc make flex bison libblas-dev liblapack-dev csh wget git g++
+RUN apt-get update && apt-get -y install mc make flex bison libblas-dev liblapack-dev csh wget git g++ doxygen
 
 WORKDIR /home/
 
